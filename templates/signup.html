@@ -1,94 +1,172 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block head %}
 <style type="text/css">
-  .login-form {
-    width: 385px;
-    margin: 30px auto;
+ .navbar {
+  background-color: transparent; !important;
+  
+  min-height: 80px;
+
+}
+
+.navbar-brand {
+  font-size: 30px;
+  
+  color: black;
+  padding: 0 15px;
+  height: 70px;
+  line-height: 80px;
+}
+
+.navbar-toggle {
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+
+.fon{background-color: white;
+    opacity: 0.8;
+    margin-left: auto;
+    margin-right: auto;
+        padding-bottom: 26.5px;
+    line-height: 27px;
+    width: 85%;
+}
+.fon>p{
+        background-color: white;
+    opacity: 0.8;
+     margin-left: auto;
+    margin-right: auto;
+    padding-top: 26.5px;
+     padding-bottom: 26.5px;
+    width: 10em;
+}
+
+.navbar-nav > li > a {
+
+    color: black;
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+    font-size: 20px;
+    background-color: transparent;
   }
-    .login-form form {        
-      margin-bottom: 15px;
-        background: #f7f7f7;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-        padding: 30px;
-    }
-    .login-form h2 {
-        margin: 0 0 15px;
-    }
-    .form-control, .login-btn {
-        min-height: 38px;
-        border-radius: 2px;
-    }
-    .input-group-addon .fa {
-        font-size: 18px;
-    }
-    .login-btn {
-        font-size: 15px;
-        font-weight: bold;
-    }
-  .social-btn .btn {
-    border: none;
-        margin: 10px 3px 0;
-        opacity: 1;
-  }
-    .social-btn .btn:hover {
-        opacity: 0.9;
-    }
-  .social-btn .btn-primary {
-        background: #507cc0;
-    }
-  .social-btn .btn-info {
-    background: #64ccf1;
-  }
-  .social-btn .btn-danger {
-    background: #df4930;
-  }
-    .or-seperator {
-        margin-top: 20px;
-        text-align: center;
-        border-top: 1px solid #ccc;
-    }
-    .or-seperator i {
-        padding: 0 10px;
-        background: #f7f7f7;
-        position: relative;
-        top: -11px;
-        z-index: 1;
-    }   
+.container-fluid>object {
+
+    background-color: white;
+    
+}
+.size{background-color: white;
+    opacity: 0.8;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+    width: 50%;}
+
+.pos{
+    background-color: white;
+    opacity: 0.8;
+     margin-left: auto;
+    margin-right: auto;
+    padding-top: 26.5px;
+     padding-bottom: 26.5px;
+    width: 640px
+
+
+ }
+
+object{
+    background-color: white;
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+body { 
+  background: url("{% static '1.png' %}") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+.footer >p    { 
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+    font-size: 10px;
+    color:  #ffffff;
+    background-color: transparent;
+  } 
 </style>
 {% endblock %}
 {% block content %}
     <div class="login-form">
     <form method="post">
       {% csrf_token %}
-        <h2 class="text-center">Sign up</h2>   
-        <div class="form-group">
-          <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control" name="{{ form.username.html_name }}" placeholder="Username" required="required">        
+ <div class="fon container-fluid">
+    <section class="container">
+        <div class="container-page">                
+            <div class="col-md-6">
+                <h3 class="dark-grey">Реєстрація</h3>
+                <div class="form-group col-lg-12">
+                    <label>Username</label>
+                    <input type="" name="{{ form.username.html_name }}" class="form-control" id="" value="">
+                </div>
+                {% if form.username.help_text %}
+                    <small style="color: grey">{{ form.username.help_text }}</small>
+                {% endif %}
+                <div class="form-group col-lg-12">
+                    <label>Прізвише</label>
+                    <input type="" name="{{ form.last_name.html_name }}" class="form-control" id="" value="">
+                </div>
+
+                <div class="form-group col-lg-12">
+                    <label>Ім'я</label>
+                    <input type="" name="{{ form.first_name_name.html_name }}" class="form-control" id="" value="">
+                </div>
+                <div class="form-group col-lg-12">
+                    <label>По батькові</label>
+                    <input type="" name="{{ form.middlename.html_name }}" class="form-control" id="" value="">
+                </div>
+                <div class="form-group col-lg-12">
+                    <label>Номер групи</label>
+                    <input type="" name="{{ form.group.html_name }}" class="form-control" id="" value="">
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label>Пароль</label>
+                    <input type="password" name="{{ form.password1.html_name }}" class="form-control" id="" value="">
+                </div>
+                
+                <div class="form-group col-lg-6">
+                    <label>Повторити пароль</label>
+                    <input type="password" name="{{ form.password2.html_name }}" class="form-control" id="" value="">
+                </div>
+                                        
+            
             </div>
-        {% if form.username.help_text %}
-          <small style="color: grey">{{ form.username.help_text }}</small>
-        {% endif %}
-        </div>
-    <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control" name="{{ form.password1.html_name }}" placeholder="Password" required="required">        
+        
+            <div class="col-md-6">
+                <h3 class="dark-grey">Можливості</h3>
+                <p>
+                    При реєстрації вам надається можливіть виконувати такі функції
+                </p>
+                <p>
+                    -Пошук кабінету за номером группи 
+                </p>
+                <p>
+                    -
+                </p>
+            
+                
+                <button type="submit" class="btn btn-primary">Зареєструватись</button>
             </div>
         </div>
-            <div class="form-group">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control" name="{{ form.password2.html_name }}" placeholder="Password confirmation" required="required">        
-            </div>
-        {% if form.password1.help_text %}
-          <small style="color: grey">{{ form.password1.help_text }}</small>
-        {% endif %}
-        </div>       
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary login-btn btn-block">Sign up</button>
-        </div>
+    </section>
+</div>
     </form>
     {% for field in form %}
         {% for error in field.errors %}
